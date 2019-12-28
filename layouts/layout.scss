@@ -1,0 +1,27 @@
+$l: "Layout";
+body {
+  background-color: #f7fbfd;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #24292e;
+}
+.el-main , .el-header{
+  
+  padding: 0px;
+}
+/* NUXT default transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+.#{$l} {
+  margin: 0 auto;
+}

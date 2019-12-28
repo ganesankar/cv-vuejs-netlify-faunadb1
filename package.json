@@ -1,0 +1,45 @@
+{
+  "name": "cv-vuejs-netlify-faunadb",
+  "version": "1.0.0",
+  "description": "Nuxt.js VueJS and FaunaDB based CV  for running Netlify functions locally in a dev environment and as a generated static site deployed to Netlify",
+  "author": "Ganesan Karuppaiya <ganesank@live.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "test": "ntl dev & wait-on http://localhost:3000 & cypress run",
+    "testing": "cypress run",
+    "generate": "nuxt generate",
+    "lint": "sass-lint -c .sass-lint.yml '**/*.scss' -v -q -i 'node_modules/**/*.scss' && eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "dotenv": "^6.2.0",
+    "element-ui": "^2.13.0",
+    "faunadb": "^2.6.1",
+    "lodash": "^4.17.15",
+    "encoding": "^0.1.12",
+    "mailgun.js": "^2.0.1",
+    "node-fetch": "^2.3.0",
+    "normalize.css": "^8.0.1",
+    "nuxt": "^2.4.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.1.2",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "cypress": "^3.8.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-cypress": "^2.8.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "netlify-cli": "2.19.0",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "sass-lint": "^1.12.1",
+    "sass-loader": "^7.1.0",
+    "wait-on": "^3.3.0"
+  }
+}
