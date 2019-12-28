@@ -15,8 +15,8 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="block">
     <h4>{{ data.name }}</h4>
-    <p>{{ data.desc }}</p>
+    <div v-html="data.desc"></div>
   </div>
 </template>

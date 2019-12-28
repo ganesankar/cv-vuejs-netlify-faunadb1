@@ -34,8 +34,10 @@ export default {
           >{{ citem.startdate === 'c' ? 'Present' : citem.startdate }}
           {{ citem.enddate === 'c' ? 'Present' : citem.enddate }}</el-divider
         >
-        <h4>{{ citem.name }}</h4>
-        <h3>{{ citem.institute }}</h3>
+        <el-link type="primary" class="upperCase">{{ citem.name }}</el-link>
+        <br />
+        <el-link type="info">{{ citem.institute }} </el-link>
+        <br />
         {{ citem.location }}
         {{ citem.desc }}
       </el-col>

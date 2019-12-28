@@ -31,20 +31,23 @@ export default {
         :key="citem.name"
       >
         <strong></strong>
-        <el-card class="box-card">
+        <el-card class="box-card exp-card">
           <div slot="header" class="clearfix">
-            <h4>{{ citem.name }}</h4>
-            <strong>{{ citem.company }} - {{ citem.location }}</strong>
-            <el-tag size="mini">
-              {{ citem.startdate === 'c' ? 'Present' : citem.startdate }}
-              {{ citem.enddate === 'c' ? 'Present' : citem.enddate }}</el-tag
+            <el-link type="primary" class="upperCase">{{ citem.name }}</el-link>
+            <br />
+            <el-link type="info"
+              >{{ citem.company }} <small>{{ citem.location }} </small></el-link
             >
           </div>
+          <el-divider content-position="right">
+            {{ citem.startdate === 'c' ? 'Present' : citem.startdate }} -
+            {{ citem.enddate === 'c' ? 'Present' : citem.enddate }}
+          </el-divider>
           <div v-html="citem.desc"></div>
           <br />
-          <div>
+          <div v-if="citem.values">
             <el-collapse v-model="activeNames" @change="handleChange">
-              <el-collapse-item title="Responsibility" name="1">
+              <el-collapse-item title="Responsibilities" name="1">
                 <ol>
                   <li v-for="citemv in citem.values" :key="citemv.id">
                     {{ citemv.name }}
@@ -53,9 +56,36 @@ export default {
               </el-collapse-item>
             </el-collapse>
           </div>
+          <div v-if="citem.technology">
+            <el-divider content-position="left"> TECHNOLOGY </el-divider>
+            <el-tag
+              v-for="datasip in citem.technology"
+              :key="datasip"
+              effect="dark"
+              size="mini"
+            >
+              {{ datasip }}
+            </el-tag>
+          </div>
         </el-card>
         <br />
       </el-col>
     </el-row>
   </div>
 </template>
+<style lang="scss">
+.exp-card .el-card__body {
+  padding-top: 0;
+}
+.exp-card .el-card__header {
+  border-bottom: none;
+  padding: 18px 20px 0px 20px;
+}
+.exp-card .el-divider__text {
+  background-color: #fff;
+}
+.exp-card .el-collapse {
+  border-top: 1px solid #ebeef5;
+  border-bottom: none;
+}
+</style>

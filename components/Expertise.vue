@@ -26,22 +26,35 @@ export default {
 <template>
   <div>
     <div v-for="(datas, value) in dataall" :key="value">
-      <h4>{{ value }}</h4>
-      <ol>
+      <strong class="upperCase">{{ value }}</strong>
+      <ol class="skillset">
         <li v-for="datasi in datas" :key="datasi.id">
-          <strong>{{ datasi.name }}</strong
-          ><br />
+          <strong class="upperCase">{{ datasi.name }}</strong>
           <el-tag
             v-for="datasip in datasi.values"
             :key="datasip"
             effect="dark"
-            size="medium"
+            size="mini"
           >
-            {{ datasip }}</el-tag
-          >
+            {{ datasip }}
+          </el-tag>
         </li>
       </ol>
       <div></div>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.el-tag {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.skillset li {
+  padding-bottom: 16px;
+}
+.skillset strong {
+  display: block;
+  padding-bottom: 5px;
+}
+</style>

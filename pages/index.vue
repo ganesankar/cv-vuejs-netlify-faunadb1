@@ -34,6 +34,7 @@ export default {
       }
     }
   },
+  computed: {},
   mounted() {
     axios
       .get('https://ganesan-cv-reactjs.netlify.com/.netlify/functions/cv-all')
@@ -52,58 +53,53 @@ export default {
       })
       .finally(() => (this.loading = false))
   },
-  methods: {}
+  methods: {
+    classObject(type) {
+      switch (type) {
+        case 'social':
+          return 'min10vh'
+        case 'contacts':
+          return 'min10vh'
+        case 'profile':
+          return 'min10vh'
+        case 'awards':
+          return 'min10vh'
+        default:
+          return 'min60vh'
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <div>
-    <div v-for="item in info" :key="item.name" class="generalsec1">
-      <el-container>
-        <el-container class="max-990">
-          <el-row type="flex" class="row-bg-max">
-            <el-col :xs="24" :sm="24" :md="8">
-              <div v-if="item.type === 'social'" class="min10vh">
-                <h4>SOCIAL</h4>
-                <p>Kindof Active</p>
-              </div>
-              <div v-else-if="item.type === 'intro'" class="min10vh"></div>
-              <div v-else-if="item.type === 'contacts'" class="min10vh">
-                <h4>CONTACTS</h4>
-                <p>Ways to reach me</p>
-              </div>
-              <div v-else class="min80vh">
-                <h4>{{ item.name }}</h4>
-                <p>{{ item.desc }}</p>
-              </div>
-              <div></div>
-            </el-col>
-            <el-col :xs="24" :sm="24" :md="16">
+    <el-container v-for="item in info" :key="item.name" class="generalsec1">
+      <el-container class="max-990">
+        <el-row class="row-bg-max">
+          <el-col :xs="24" :sm="24" :md="8" class="titleLeft">
+            <div v-if="item.type === 'social'">
+              <strong class="upperCase">SOCIAL</strong>
+              <p>Kindof Active</p>
+            </div>
+            <div v-else-if="item.type === 'intro'"></div>
+            <div v-else-if="item.type === 'contacts'">
+              <strong class="upperCase">CONTACTS</strong>
+              <p>Ways to reach me</p>
+            </div>
+            <div v-else class="">
+              <strong class="upperCase">{{ item.name }}</strong>
+              <p>{{ item.desc }}</p>
+            </div>
+          </el-col>
+          <!--Right Container-->
+          <el-col :xs="24" :sm="24" :md="16">
+            <div v-bind:class="[classObject(item.type), 'rightContainer']">
               <div v-if="item.type === 'social'">
-                <el-row type="flex" class="row-bg-max">
-                  <el-col
-                    :xs="12"
-                    :sm="12"
-                    :md="6"
-                    v-for="citem in item.values"
-                    :key="citem.name"
-                  >
-                    <h4>{{ citem.name }}</h4>
-                    <el-link
-                      :underline="false"
-                      v-bind:href="citem.elink"
-                      type="primary"
-                      >{{ citem.name }}</el-link
-                    >
-                  </el-col>
-                </el-row>
+                <ExtLinks v-bind:data="item.values" />
               </div>
               <div v-else-if="item.type === 'intro'">
-                <h1 class="uk-h1 tm-heading-fragment">
-                  {{ item.name }}
-                </h1>
-
-                <div v-html="item.desc"></div>
+                <Intro v-bind:data="item" />
               </div>
               <div v-else-if="item.type === 'contacts'">
                 <ExtLinks v-bind:data="item.values" />
@@ -136,11 +132,11 @@ export default {
               <div v-else>
                 <Intro v-bind:data="item.values" />
               </div>
-            </el-col>
-          </el-row>
-        </el-container>
+            </div>
+          </el-col>
+        </el-row>
       </el-container>
-    </div>
+    </el-container>
   </div>
 </template>
 
@@ -152,12 +148,32 @@ export default {
   max-width: 990px;
   margin: 0 auto;
 }
+.titleLeft {
+  background: rgba(0, 0, 0, 0.01);
+  display: flex;
+  min-height: 100%;
+}
+
+.titleLeft > div {
+  display: block;
+  width: 100%;
+  padding: 30px;
+  text-align: right;
+}
+.titleLeft p {
+  margin: 0;
+  opacity: 0.6;
+}
 .generalsec1:nth-child(even) {
   background: rgba(0, 0, 0, 0.01);
 }
-
+.rightContainer > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
 .rightContainer {
-  padding: 60px 30px 30px 30px;
+  padding: 30px;
   display: flex;
   min-height: 100%;
 }
@@ -176,8 +192,8 @@ export default {
   font-style: normal;
   line-height: normal;
 }
-.min80vh {
-  min-height: 80vh;
+.min60vh {
+  min-height: 60vh;
 }
 .min10vh {
   min-height: 10vh;

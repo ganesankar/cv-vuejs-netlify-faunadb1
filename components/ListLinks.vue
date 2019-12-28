@@ -23,21 +23,34 @@ export default {
         :md="24"
         v-for="citem in data"
         :key="citem.name"
+        class="extLinkContent"
       >
-        <h4>{{ citem.name }}</h4>
-        <el-link :underline="false" v-bind:href="citem.link" type="primary">{{
-          citem.desc
-        }}</el-link>
+        <el-link
+          :underline="false"
+          v-bind:href="citem.link"
+          type="primary"
+          class=" extLink"
+          target="_blank"
+        >
+          <strong class="upperCase">{{ citem.name }}</strong>
+          <p>{{ citem.desc }}</p>
+          <el-divider content-position="left">{{ citem.link }}</el-divider>
+        </el-link>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <style lang="scss">
-.el-divider__text {
-  position: absolute;
+.extLinkContent .el-divider__text {
   background-color: #f7fbfd;
-  padding: 0 20px;
-  color: #303133;
+  font-weight: 100;
+}
+.extLink {
+  display: block;
+}
+
+.extLinkContent {
+  padding: 5px;
 }
 </style>

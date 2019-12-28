@@ -7,9 +7,17 @@ body {
   line-height: 1.5;
   color: #24292e;
 }
-.el-main , .el-header{
+.el-main {
   
   padding: 0px;
+}
+ .el-header{
+  position:fixed;
+  top:0;
+  width:100%;
+  margin: 0;;
+  padding: 0px;
+  z-index: 2;
 }
 /* NUXT default transition */
 .page-enter-active,
@@ -25,3 +33,11 @@ body {
 .#{$l} {
   margin: 0 auto;
 }
+.page {
+  min-height: 90vh;
+}
+.upperCase {
+  text-transform: uppercase;
+}
+.rightMenu{ float:right !important}
+.footer{ display: block; margin:0; padding:10px; text-align:center}
