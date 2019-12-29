@@ -24,8 +24,16 @@ export default {
         type="primary"
         target="_blank"
       >
-        <strong class="upperCase">{{ citem.name }}</strong
-        ><br />
+        <strong class="upperCase">{{ citem.name }}</strong>
+      </el-link>
+      <br />
+      <el-link
+        :underline="false"
+        v-bind:href="citem.link"
+        v-if="citem.link"
+        type="info"
+        target="_blank"
+      >
         {{ citem.desc }}
       </el-link>
       <el-link

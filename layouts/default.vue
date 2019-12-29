@@ -28,10 +28,56 @@ export default {
           name: 'Others',
           address: 'Webpack, Normalize, ESLint, ScSS'
         }
+      ],
+      links: [
+        {
+          name: 'Intro',
+          address: '#intro'
+        },
+        {
+          name: 'Contact',
+          address: '#contact'
+        },
+        {
+          name: 'Social',
+          address: '#social'
+        },
+        {
+          name: 'Expertise',
+          address: '#expertise'
+        },
+        {
+          name: 'Skills',
+          address: '#skills'
+        },
+        {
+          name: 'Experience',
+          address: '#experience'
+        },
+        {
+          name: 'Education',
+          address: '#education'
+        },
+        {
+          name: 'Projects',
+          address: '#projects'
+        },
+        {
+          name: 'Other Projects',
+          address: '#otherprojects'
+        },
+        {
+          name: 'Awards',
+          address: '#awards'
+        },
+        {
+          name: 'Profile',
+          address: '#profile'
+        }
       ]
     }
   },
-
+  mounted() {},
   methods: {}
 }
 </script>
@@ -44,12 +90,16 @@ export default {
         class="el-menu-demo"
         mode="horizontal"
       >
-        <el-menu-item index="1"> Ganesan Karuppaiya</el-menu-item>
+        <el-menu-item index="1">
+          <h2 class="el-logo">Ganesan Karuppaiya</h2>
+        </el-menu-item>
         <el-submenu index="2" class="rightMenu">
           <template slot="title"><i class="el-icon-more-outline"></i></template>
-          <el-menu-item index="2-1">item one</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
+          <el-menu-item v-for="citem in links" :key="citem.name" index="2-1">
+            <el-link>
+              <strong class="upperCase">{{ citem.name }}</strong>
+            </el-link></el-menu-item
+          >
         </el-submenu>
       </el-menu>
     </ElHeader>
