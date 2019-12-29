@@ -10,7 +10,7 @@ export default {
         },
         {
           name: 'JavaScript Library',
-          address: 'Lodash'
+          address: 'Lodash, Vue Luxon'
         },
         {
           name: 'Server',
@@ -96,10 +96,15 @@ export default {
         <el-submenu index="2" class="rightMenu">
           <template slot="title"><i class="el-icon-more-outline"></i></template>
           <el-menu-item v-for="citem in links" :key="citem.name" index="2-1">
-            <el-link>
-              <strong class="upperCase">{{ citem.name }}</strong>
-            </el-link></el-menu-item
-          >
+            <a
+              v-scroll-to="citem.address"
+              href="#"
+              class="upperCase el-link el-link--primary is-underline"
+            >
+              <strong class="upperCase">{{ citem.name }}</strong></a
+            >
+            <el-link v-scroll-to="'#element'"> </el-link
+          ></el-menu-item>
         </el-submenu>
       </el-menu>
     </ElHeader>

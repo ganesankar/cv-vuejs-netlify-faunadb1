@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       info: null,
+      fullscreenLoading: false,
       showMoreExp: false,
       moreExp: {},
       showMoreProj: false,
@@ -36,6 +37,7 @@ export default {
   },
   computed: {},
   mounted() {
+    this.fullscreenLoading = true
     axios
       .get('https://ganesan-cv-reactjs.netlify.com/.netlify/functions/cv-all')
       .then(response => {
@@ -50,6 +52,9 @@ export default {
         }
         this.loading = false
         this.errored = false
+        setTimeout(() => {
+          this.fullscreenLoading = false
+        }, 1000)
       })
       .finally(() => (this.loading = false))
   },
@@ -74,8 +79,9 @@ export default {
 
 <template>
   <div>
+    <el-button v-loading.fullscreen.lock="fullscreenLoading"> </el-button>
     <el-container v-for="item in info" :key="item.name" class="generalsec1">
-      <el-container class="max-990">
+      <el-container v-bind:id="item.type" class="max-990">
         <el-row class="row-bg-max">
           <el-col :xs="24" :sm="24" :md="8" class="titleLeft">
             <div v-if="item.type === 'social'">
@@ -157,7 +163,7 @@ export default {
 .titleLeft > div {
   display: block;
   width: 100%;
-  padding: 30px;
+  padding: 70px 30px 30px 30px;
   text-align: right;
 }
 .titleLeft p {
@@ -173,7 +179,7 @@ export default {
   align-items: center;
 }
 .rightContainer {
-  padding: 30px;
+  padding: 70px 30px 30px 30px;
   display: flex;
   min-height: 100%;
 }

@@ -30,9 +30,20 @@ export default {
         v-for="citem in data"
         :key="citem.name"
       >
-        <el-divider content-position="right"
-          >{{ citem.startdate === 'c' ? 'Present' : citem.startdate }}
-          {{ citem.enddate === 'c' ? 'Present' : citem.enddate }}</el-divider
+        <el-divider content-position="right">
+          <span v-if="citem.startdate === 'c'">
+            Present
+          </span>
+          <span v-else>
+            {{  citem.startdate | luxon:format('MMM-yyyy', { serverFormat: 'dd/MM/yyyy' })}}</span
+          >
+          -
+          <span v-if="citem.enddate === 'c'">
+            Present
+          </span>
+          <span v-else>
+            {{  citem.enddate | luxon:format('MMM-yyyy', { serverFormat: 'dd/MM/yyyy' })}}</span
+          ></el-divider
         >
         <el-link type="primary" class="upperCase">{{ citem.name }}</el-link>
         <br />

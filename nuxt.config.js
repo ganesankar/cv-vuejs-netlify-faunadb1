@@ -7,8 +7,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-
-      { name: 'author', content: 'Lucid – wearelucid.ch' }
+      { name: 'author', content: 'Ganesan Karuppaiya - ganesan.xyz' }
     ]
   },
 
@@ -37,7 +36,7 @@ export default {
   /*
    ** Modules
    */
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', 'vue-scrollto/nuxt',],
 
   /*
    ** Axios config
