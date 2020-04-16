@@ -39,7 +39,7 @@ export default {
   mounted() {
     this.fullscreenLoading = true
     axios
-      .get('https://ganesan-cv-reactjs.netlify.com/.netlify/functions/cv-all')
+      .get('https://ganesan-cv-reactjs.netlify.app/.netlify/functions/cv-all')
       .then(response => {
         if (response.data.length > 0) {
           const list = []
